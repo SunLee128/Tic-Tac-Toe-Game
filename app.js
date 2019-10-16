@@ -16,6 +16,7 @@ var wins = [
 	[2, 4, 6]
 ]
 var winsString = ["012","345","678","036","147","258","048","246"]
+var board = [0,1,2,3,4,5,6,7,8]
 var clickCounter = 0
 
 //handleClick
@@ -27,31 +28,31 @@ var handleClick = function(event){
             markXId.push(event.target.id)
             markXId.sort();
             clickCounter++;
-            if (markXId.length=3){
-                checkWinsX();
-            }
+            // if (markXId.length=3){
+            //     // checkWinsX();
+            // }
         } else {
             event.target.textContent = markO;
             event.target.classList.add('O')
             markOId.push(event.target.id);
             markOId.sort();
             clickCounter++;
-            if (markOId.length=3){
-                checkWinsY();
-            }
+            // if (markOId.length=3){
+            //     // checkWinsY();
+            // }
         }      
     }
 }
 
-var checkWinsX = function(){
-    var xString = markXId.join()
-    while(i<winsString.length){
-        if (winsString[i]===xfirst3){
-            console.log('Winner is X')
-            break;
-        }
-    }
-}
+// var checkWinsX = function(){
+//     var xString = markXId.join()
+//     while(i<winsString.length){
+//         if (winsString[i]===xfirst3){
+//             console.log('Winner is X')
+//             break;
+//         }
+//     }
+// }
 
 
 
@@ -84,7 +85,7 @@ boxes.forEach(function(box){
 //replay button to reset the board
 var handleReplay = function(event){
     for(var i=0; i<boxes.length; i++){
-        boxes[i].textContent = " "
+        boxes[i].textContent = ""
     }
 }
 
