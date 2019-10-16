@@ -3,8 +3,8 @@ var boxes = document.querySelectorAll(".box");
 // var player2Box = document.querySelectorAll(".player2");
 var markO = 'O'
 var markX = 'X'
-var markOId = []
-var markXId = []
+// var markOId = []
+// var markXId = []
 var wins = [
     [0, 1, 2],
 	[3, 4, 5],
@@ -24,6 +24,7 @@ var handleClick = function(event){
 
     // making a move
     if(event.target.textContent ===""){
+    
         if(clickCounter%2 === 0){
             event.target.textContent = markX;
             event.target.classList.add('X')
@@ -46,15 +47,17 @@ var handleClick = function(event){
             // }
         }      
     }
-
-
     // check for wins
-
-    // if (board[wins[0][0]] == 'X' && board[wins[0][1]] == 'X' && board[wins[0][2]] == 'X') {
-    //     console.log('won')
-    // }
-
-
+    for (var i = 0; i < wins.length; i++) {
+        if (board[wins[i][0]] == 'X' && board[wins[i][1]] == 'X' && board[wins[i][2]] == 'X') {
+            alert('X has won');
+            handleReplay()
+        } else if (board[wins[i][0]] == 'O' && board[wins[i][1]] == 'O' && board[wins[i][2]] == 'O'){
+            alert('O has won!!');
+            handleReplay()
+        } 
+        
+    }
 }
 
 // for(var i=0; i<wins.length; i++){
@@ -63,20 +66,18 @@ var handleClick = function(event){
 //     }  
 // }
 
-
-
-switch(board) {
-    case board[0]==="X" && board[1]==="X" && board[2]==="X":
-    case board[3]==="X" && board[4]==="X" && board[5]==="X":
-    case board[6]==="X" && board[7]==="X" && board[8]==="X":
-    case board[0]==="X" && board[3]==="X" && board[6]==="X":
-    case board[1]==="X" && board[4]==="X" && board[7]==="X":
-    case board[2]==="X" && board[5]==="X" && board[8]==="X":
-    case board[0]==="X" && board[4]==="X" && board[8]==="X":
-    case board[2]==="X" && board[4]==="X" && board[6]==="X":
-        alert("Winner X!");
-        break;
- }
+// switch(board) {
+//     case board[0]==="X" && board[1]==="X" && board[2]==="X":
+//     case board[3]==="X" && board[4]==="X" && board[5]==="X":
+//     case board[6]==="X" && board[7]==="X" && board[8]==="X":
+//     case board[0]==="X" && board[3]==="X" && board[6]==="X":
+//     case board[1]==="X" && board[4]==="X" && board[7]==="X":
+//     case board[2]==="X" && board[5]==="X" && board[8]==="X":
+//     case board[0]==="X" && board[4]==="X" && board[8]==="X":
+//     case board[2]==="X" && board[4]==="X" && board[6]==="X":
+//         alert("Winner X!");
+//         break;
+//  }
 
 
 
@@ -122,6 +123,7 @@ boxes.forEach(function(box){
 var handleReplay = function(event){
     for(var i=0; i<boxes.length; i++){
         boxes[i].textContent = ""
+        board[i] = i
     }
 }
 

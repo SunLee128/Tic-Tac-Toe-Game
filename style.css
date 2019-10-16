@@ -59,3 +59,7 @@ button{
 #b2,#b5,#b8{
     border-right: none;
 }
+.won {
+    transition: all 0.5s linear;
+    background-color:mistyrose;
+}
