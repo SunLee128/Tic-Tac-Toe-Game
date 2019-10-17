@@ -1,8 +1,15 @@
-### Project #1: Tic Tac Toe
+### Project #1: Memory Tic Tac Toe ❌⭕❌
+
+### Description
+Classic Tic Tac Toe game with a twist. This is a memory game. You have to remember the board. When you are stuck, Show button will reveal the board briefly. 
 
 ### Link
-(https://sunlee128.github.io/Tic-Tac-Toe-Game/)
+https://sunlee128.github.io/Tic-Tac-Toe-Game/
 
+### Take Away Skills
+* Java Script 
+
+### Future 
 
 Your app must:
 
@@ -17,13 +24,4 @@ Your app must:
 
 
 
-### Necessary Deliverables
-
-
-* **tomorrow** - At least one artefact of either pseudocode, flow diagram, wireframe, mockup or storyboard demonstrating planning - **Due tomorrow** 
-* A **working game, built by you**, hosted somewhere on the internet
-* A **link to your hosted working game** in the URL section of your GitHub repo
-* A **git repository hosted on GitHub**, with a link to your hosted game, and **frequent commits** dating back to the very beginning of the project
-* **A ``readme.md`` file** with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
-* Presentation on Friday 2:30pm
 
