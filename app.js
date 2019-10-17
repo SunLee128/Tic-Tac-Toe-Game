@@ -27,7 +27,7 @@ var handleClick = function(event){
             event.target.textContent = markX;
             event.target.classList.add('X')
             event.target.classList.add('fade-out')
-            //mark the board
+             //mark the board item at index of target id
             board[Number(event.target.id[1])] = markX;
             msg.textContent = "O's turn now"
             clickCounter++;
@@ -37,10 +37,13 @@ var handleClick = function(event){
             event.target.textContent = markO;
             event.target.classList.add('O')
             event.target.classList.add('fade-out')
+            //mark the board item at index of target id
             board[Number(event.target.id[1])] = markO;
             clickCounter++;
             msg.textContent = "X's turn now"
         }      
+    } else {
+        msg.textContent = "Try different box!"
     }
     checkWins();
 }
@@ -50,7 +53,7 @@ var checkWins = function(){
     for(var i = 0; i < wins.length; i++) {
         if (board[wins[i][0]] == 'X' && board[wins[i][1]] == 'X' && board[wins[i][2]] == 'X') {
             msg.textContent = "X has won!" 
-            msg.classList.add('bounce-top')
+            msg.classList.add('shake-horizontal')
             stopGame();
             // winInd1 = board.indexOf(board[wins[i][0]]);
             // winInd2 = board.indexOf(board[wins[i][1]]);
@@ -60,15 +63,17 @@ var checkWins = function(){
             return winCaseX
         } else if (board[wins[i][0]] == 'O' && board[wins[i][1]] == 'O' && board[wins[i][2]] == 'O'){
             msg.textContent = "O has won!"
-            msg.classList.add('bounce-top')
+            msg.classList.add('shake-horizontal')
             highlightWinner();
             stopGame();
         } else if (clickCounter === 9){
             msg.textContent = "It is a draw!🤝"
-            msg.classList.add('bounce-top')
+            msg.classList.add('shake-horizontal')
+            stopGame();
         }
     }
 }
+
 //Stop Game when there is a winner
 var stopGame = function(){
     for(i=0; i<board.length; i++){
@@ -98,15 +103,23 @@ var showBoxesTemp = function(){
     marks.forEach(function(mark){
         mark.classList.remove('fade-out')
     })
-    }
+    // setup a function to run in 5 seconds
+    setTimeout(showAgain, 200);
+}
 
+
+var showAgain = function() {
+    marks.forEach(function(mark){
+        mark.classList.add('fade-out')
+    })
+}
 //replay button to reset the board
 var handleReplay = function(event){
     for(var i=0; i<marks.length; i++){
         marks[i].textContent = ""
         board[i] = i
         msg.textContent = "Start!"
-        msg.classList.remove("bounce-top");
+        msg.classList.remove("shake-horizontal");
         showMarks()
         clickCounter = 0;
     }

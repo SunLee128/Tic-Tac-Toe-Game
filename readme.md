@@ -15,7 +15,7 @@ Your app must:
 * **Deploy your game online**, where the rest of the world can access it
 * Use **semantic markup** for HTML and CSS (adhere to best practices)
 
----
+
 
 ### Necessary Deliverables
 
