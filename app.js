@@ -26,6 +26,7 @@ var handleClick = function(event){
         if(clickCounter%2 === 0){
             event.target.textContent = markX;
             event.target.classList.add('X')
+            event.target.classList.add('fade-out')
             board[Number(event.target.id[1])] = markX;
             msg.textContent = "O's turn now"
             clickCounter++;
@@ -34,6 +35,7 @@ var handleClick = function(event){
             else {
             event.target.textContent = markO;
             event.target.classList.add('O')
+            event.target.classList.add('fade-out')
             board[Number(event.target.id[1])] = markO;
             clickCounter++;
             msg.textContent = "X's turn now"
@@ -41,11 +43,15 @@ var handleClick = function(event){
     }
     checkWins();
 }
+
 //check wins against var Wins
 var checkWins = function(){
     for(var i = 0; i < wins.length; i++) {
         if (board[wins[i][0]] == 'X' && board[wins[i][1]] == 'X' && board[wins[i][2]] == 'X') {
             msg.textContent = "X has won!" 
+            msg.classList.add('bounce-top')
+            stopGame();
+            // msg.classList.add(".bounce-top");
             winInd1 = board.indexOf(board[wins[i][0]]);
             winInd2 = board.indexOf(board[wins[i][1]]);
             winind3 = board.indexOf(board[wins[i][2]]);
@@ -54,9 +60,21 @@ var checkWins = function(){
             return winCaseX
         } else if (board[wins[i][0]] == 'O' && board[wins[i][1]] == 'O' && board[wins[i][2]] == 'O'){
             msg.textContent = "O has won!"
+            msg.classList.add('bounce-top')
             highlightWinner();
+            stopGame();
         } else if (clickCounter === 9){
-            msg.textContent = "It is a draw!"
+            msg.textContent = "It is a draw!🤝"
+            msg.classList.add('bounce-top')
+        }
+    }
+}
+//Stop Game when there is a winner
+var stopGame = function(){
+    for(i=0; i<board.length; i++){
+        if(typeof board[i] === "number"){
+            boxes[board[i]].textContent = "  "
+            showBoxes();
         }
     }
 }
@@ -70,13 +88,29 @@ boxes.forEach(function(box){
     box.addEventListener('click',handleClick);
 })
 
+var showBoxes = function(){
+boxes.forEach(function(box){
+    box.classList.remove('fade-out')
+})
+}
+
+var showBoxesTemp = function(){
+    boxes.forEach(function(box){
+        box.classList.remove('fade-out')
+    })
+    }
+
 //replay button to reset the board
 var handleReplay = function(event){
     for(var i=0; i<boxes.length; i++){
         boxes[i].textContent = ""
         board[i] = i
         msg.textContent = "Start!"
+        msg.classList.remove("bounce-top");
+        showBoxes()
+        clickCounter = 0;
     }
 }
-
+//Add event Listener to replay button
 document.querySelector(".replay").addEventListener('click',handleReplay)
+document.querySelector(".show").addEventListener('click',showBoxesTemp)
