@@ -1,4 +1,5 @@
 var boxes = document.querySelectorAll(".box");
+var marks = document.querySelectorAll(".inner");
 var markO = 'O'
 var markX = 'X'
 var msg = document.querySelector(".msg")
@@ -14,7 +15,6 @@ var wins = [
 ]
 var winCaseX = []
 var winCaseY = []
-var winsString = ["012","345","678","036","147","258","048","246"]
 var board = [0,1,2,3,4,5,6,7,8]
 var clickCounter = 0
 
@@ -27,6 +27,7 @@ var handleClick = function(event){
             event.target.textContent = markX;
             event.target.classList.add('X')
             event.target.classList.add('fade-out')
+            //mark the board
             board[Number(event.target.id[1])] = markX;
             msg.textContent = "O's turn now"
             clickCounter++;
@@ -51,11 +52,10 @@ var checkWins = function(){
             msg.textContent = "X has won!" 
             msg.classList.add('bounce-top')
             stopGame();
-            // msg.classList.add(".bounce-top");
-            winInd1 = board.indexOf(board[wins[i][0]]);
-            winInd2 = board.indexOf(board[wins[i][1]]);
-            winind3 = board.indexOf(board[wins[i][2]]);
-            winCaseX.push(wins[i])
+            // winInd1 = board.indexOf(board[wins[i][0]]);
+            // winInd2 = board.indexOf(board[wins[i][1]]);
+            // winind3 = board.indexOf(board[wins[i][2]]);
+            // winCaseX.push(wins[i])
             highlightWinner();
             return winCaseX
         } else if (board[wins[i][0]] == 'O' && board[wins[i][1]] == 'O' && board[wins[i][2]] == 'O'){
@@ -73,8 +73,8 @@ var checkWins = function(){
 var stopGame = function(){
     for(i=0; i<board.length; i++){
         if(typeof board[i] === "number"){
-            boxes[board[i]].textContent = "  "
-            showBoxes();
+            marks[board[i]].textContent = "  "
+            showMarks();
         }
     }
 }
@@ -88,26 +88,26 @@ boxes.forEach(function(box){
     box.addEventListener('click',handleClick);
 })
 
-var showBoxes = function(){
-boxes.forEach(function(box){
-    box.classList.remove('fade-out')
+var showMarks = function(){
+marks.forEach(function(mark){
+    mark.classList.remove('fade-out')
 })
 }
 
 var showBoxesTemp = function(){
-    boxes.forEach(function(box){
-        box.classList.remove('fade-out')
+    marks.forEach(function(mark){
+        mark.classList.remove('fade-out')
     })
     }
 
 //replay button to reset the board
 var handleReplay = function(event){
-    for(var i=0; i<boxes.length; i++){
-        boxes[i].textContent = ""
+    for(var i=0; i<marks.length; i++){
+        marks[i].textContent = ""
         board[i] = i
         msg.textContent = "Start!"
         msg.classList.remove("bounce-top");
-        showBoxes()
+        showMarks()
         clickCounter = 0;
     }
 }
