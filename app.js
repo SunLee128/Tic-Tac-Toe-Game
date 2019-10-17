@@ -13,7 +13,7 @@ var wins = [
 	[0, 4, 8],
 	[2, 4, 6]
 ]
-var winCaseX = []
+var winCaseX 
 var winCaseY = []
 var board = [0,1,2,3,4,5,6,7,8]
 var clickCounter = 0
@@ -26,29 +26,35 @@ var handleClick = function(event){
         if(clickCounter%2 === 0){
             event.target.textContent = markX;
             event.target.classList.add('X')
+            event.target.classList.remove('O')
             event.target.classList.add('fade-out')
              //mark the board item at index of target id
             board[Number(event.target.id[1])] = markX;
             msg.textContent = "O's turn now"
             clickCounter++;
-            console.log(clickCounter)
         } 
             //when counter is odd number
             else {
             event.target.textContent = markO;
             event.target.classList.add('O')
+            event.target.classList.remove('X')
             event.target.classList.add('fade-out')
             //mark the board item at index of target id
             board[Number(event.target.id[1])] = markO;
             msg.textContent = "X's turn now"
             clickCounter++;
-            console.log(clickCounter)
         }      
     } else {
         msg.textContent = "Try different box!"
         msg.classList.add('shake-horizontal')
+        setTimeout(unShake, 500);
     }
     checkWins();
+}
+
+//remove .shake-horizontal from message 
+var unShake = function(){
+    msg.classList.remove('shake-horizontal')
 }
 
 //check wins against var Wins
@@ -57,20 +63,17 @@ var checkWins = function(){
         if (board[wins[i][0]] == 'X' && board[wins[i][1]] == 'X' && board[wins[i][2]] == 'X') {
             msg.textContent = "X has won! 🏆" 
             msg.classList.add('shake-horizontal')
+            winCase = wins[i]
             stopGame();
-            // winInd1 = board.indexOf(board[wins[i][0]]);
-            // winInd2 = board.indexOf(board[wins[i][1]]);
-            // winind3 = board.indexOf(board[wins[i][2]]);
-            // winCaseX.push(wins[i])
             highlightWinner();
-            return winCaseX
         } else if (board[wins[i][0]] == 'O' && board[wins[i][1]] == 'O' && board[wins[i][2]] == 'O'){
             msg.textContent = "O has won! 🎉"
             msg.classList.add('shake-horizontal')
-            highlightWinner();
+            winCase = wins[i]
             stopGame();
+            highlightWinner();
         } else if (clickCounter === 9){
-            msg.textContent = "It is a draw! 🤝"
+            msg.textContent = "It is a draw!🤝"
             msg.classList.add('shake-horizontal')
             showMarks()
         }
@@ -83,12 +86,15 @@ var stopGame = function(){
         if(typeof board[i] === "number"){
             marks[board[i]].textContent = "  "
             showMarks();
+            unShake();
         }
     }
 }
 
 var highlightWinner = function(){
-    //highlight winning boxes and stop the game
+    document.querySelector("#s"+winCase[0]).classList.add("shake-horizontal")
+    document.querySelector("#s"+winCase[1]).classList.add("shake-horizontal")
+    document.querySelector("#s"+winCase[2]).classList.add("shake-horizontal")
 }
 
 //Assign eventListener to boxes
@@ -122,8 +128,9 @@ var handleReplay = function(event){
         marks[i].textContent = ""
         board[i] = i
         msg.textContent = "Start!"
-        msg.classList.remove("shake-horizontal");
+        marks[i].classList.remove("shake-horizontal");
         showMarks()
+        unShake();
         clickCounter = 0;
     }
 }
