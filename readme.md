@@ -7,10 +7,10 @@ If you are stuck use Show button to reveal the board briefly.
 !(preview)[ScreenShot.png]
 
 ### Features
-* Marks on the board disappears soon after click. 
-* Prevents user to click the same box more than once.
-* Stops game when there is a winner.
-* Message board displays game's status. 
+* Mark on the board disappears soon after click. 
+* Prevents user to click the same box more than once
+* Stops game when there is a winner
+* Message board displays current status
 * Fadeout and shake animation
 * Replay button which resets the board
 * Show button reveals the board temporarily
@@ -21,13 +21,12 @@ https://sunlee128.github.io/Tic-Tac-Toe-Game/
 !(flowchart[Flowchart.png])
 
 ### Demonstrated Skills
-* Management skills to design & create a product using CSS, html and Java Script 
 * Accessing and manipulating DOM
 * Knowlege in Event handling such as eventListener or Timeout
 * Utilising Higher order functions to control flows
 * Desing a simple layout using Flexbox
-* How to overlaying elements in CSS
-* How to apply CSS animation
+* Overlaying elements in CSS
+* Applying CSS animation
 
 ### Challanges
 * Articulating problems and solutions.
