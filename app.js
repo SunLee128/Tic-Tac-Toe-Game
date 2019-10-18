@@ -52,10 +52,6 @@ var handleClick = function(event){
     checkWins();
 }
 
-//remove .shake-horizontal from message 
-var unShake = function(){
-    msg.classList.remove('shake-horizontal')
-}
 
 //check wins against var Wins
 var checkWins = function(){
@@ -80,13 +76,18 @@ var checkWins = function(){
     }
 }
 
+//remove .shake-horizontal from message 
+var unShake = function(){
+    msg.classList.remove('shake-horizontal')
+}
+
+
 //Stop Game when there is a winner
 var stopGame = function(){
     for(i=0; i<board.length; i++){
         if(typeof board[i] === "number"){
             marks[board[i]].textContent = "  "
             showMarks();
-            unShake();
         }
     }
 }
