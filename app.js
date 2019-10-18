@@ -98,15 +98,11 @@ var highlightWinner = function(){
     document.querySelector("#s"+winCase[2]).classList.add("shake-horizontal")
 }
 
-//Assign eventListener to boxes
-boxes.forEach(function(box){
-    box.addEventListener('click',handleClick);
-})
 
 var showMarks = function(){
-marks.forEach(function(mark){
-    mark.classList.remove('fade-out')
-})
+    marks.forEach(function(mark){
+        mark.classList.remove('fade-out')
+    })
 }
 
 var showBoxesTemp = function(){
@@ -114,11 +110,11 @@ var showBoxesTemp = function(){
         mark.classList.remove('fade-out')
     })
     // setup a function to run in 5 seconds
-    setTimeout(showAgain, 200);
+    setTimeout(hideMarks, 200);
 }
 
 
-var showAgain = function() {
+var hideMarks = function() {
     marks.forEach(function(mark){
         mark.classList.add('fade-out')
     })
@@ -138,3 +134,7 @@ var handleReplay = function(event){
 //Add event Listener to replay button
 document.querySelector(".replay").addEventListener('click',handleReplay)
 document.querySelector(".show").addEventListener('click',showBoxesTemp)
+//Assign eventListener to boxes
+boxes.forEach(function(box){
+    box.addEventListener('click',handleClick);
+})
