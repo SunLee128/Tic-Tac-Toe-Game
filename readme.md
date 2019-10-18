@@ -28,7 +28,7 @@ https://sunlee128.github.io/Tic-Tac-Toe-Game/
 * Overlaying elements in CSS
 * Applying CSS animation
 
-### Challanges
+### Challenges
 * Articulating problems and solutions.
 * Organising variables and control flows in a bigger scope
 
