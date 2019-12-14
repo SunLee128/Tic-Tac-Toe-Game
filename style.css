@@ -12,6 +12,8 @@ body {
 h1{
     text-align: center;
     margin: 20px;
+    width: 100%;
+    width:cal(100%-100px):
 }
 p {
     width:400px;

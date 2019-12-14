@@ -4,7 +4,7 @@
 Classic Tic Tac Toe game with a twist. This is a memory game. You need to remember the board as you go.
 If you are stuck use Show button to reveal the board briefly. 
 
-!(preview)[ScreenShot.png]
+!(preview)[https://github.com/SunLee128/Tic-Tac-Toe-Game/blob/master/ScreenShot.png]
 
 ### Features
 * Mark on the board disappears soon after click. 
@@ -18,8 +18,6 @@ If you are stuck use Show button to reveal the board briefly.
 ### Link
 https://sunlee128.github.io/Tic-Tac-Toe-Game/
 
-!(flowchart[Flowchart.png])
-
 ### Demonstrated Skills
 * Accessing and manipulating DOM
 * Knowlege in Event handling such as eventListener or Timeout
@@ -27,11 +25,3 @@ https://sunlee128.github.io/Tic-Tac-Toe-Game/
 * Desing a simple layout using Flexbox
 * Overlaying elements in CSS
 * Applying CSS animation
-
-### Challenges
-* Articulating problems and solutions.
-* Organising variables and control flows in a bigger scope
-
-### Roadmap
-* Clean code
-* Feature to play against computer
